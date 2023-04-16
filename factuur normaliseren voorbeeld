@@ -1,0 +1,54 @@
+-- Maak tabel Rekening
+CREATE TABLE Rekening (
+  RekeningID INT PRIMARY KEY,
+  Datum DATE, --Date voor DATUM
+  Tijd TIME, --TIME voor TIJD
+  Locatie VARCHAR(255),
+  Kelner VARCHAR(255) --Varchar voor TEXT
+);
+
+-- Voeg gegevens toe aan tabel Rekening
+INSERT INTO Rekening (RekeningID, Datum, Tijd, Locatie, Kelner)
+VALUES (1, '2017-09-28', '20:10:00', 'Eetcafe t Centrum', 'Isa');
+
+
+
+CREATE TABLE Bestelling (
+  BestellingID INT PRIMARY KEY,
+  Omschrijving VARCHAR(255),
+  Aantal INT,
+  Prijs DECIMAL(5,2), --Decimal voor de prijzen
+  Totaal DECIMAL(6,2), --Decimal voor totaal
+  FOREIGN KEY (BestellingID) REFERENCES Bestelling(BestellingID)
+);
+
+
+-- Voeg gegevens toe aan rekening
+INSERT INTO Bestelling (BestellingID, Omschrijving, Aantal, Prijs, Totaal)
+VALUES 
+('2', 'rode Cabernet', '1', '3.80', '3.80'),
+('3', 'rode Merlot', '1', '3.80', '3.80'),
+('4', 'witte chardonna', '4', '4.50', '4.50'),
+('5', 'Koffie', '2', '2,20', '2.20'),
+('6', 'Steak tartaar', '1', '9.90', '9.90'),
+('7', 'Sushi', '1', '9,80', '9.80'),
+('8', 'Kalfsbiefstukjes', '1', '21.50', '21.50'),
+('9', 'Slibtong', '1', '19.50', '19.50'),
+('10', 'Brownie', '1', '7.60', '7.60'),
+('11', 'Hangop', '1', '8.50', '8.50');
+
+
+ERD
+
+
+       +--------------+   +--------------+   +------------------+
+       |    Tafel     |   |   Rekening    |   |    Bestelling     |
+       +--------------+   +--------------+   +------------------+
+       | TafelNr (PK) |   | RekeningID (PK)|   | BestellingID (PK)|
+       | Capaciteit   |   | Tijd          |   | Omschrijving      |
+       | Bezet        |   | TafelNr (FK)  |   | Aantal           |
+       +--------------+   | Locatie (FK)  |   | Prijs            |
+                           | Kernel (FK)   |   | Totaal           |
+                           +--------------+   +------------------+
+                                              
+

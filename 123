@@ -1,0 +1,111 @@
+Om deze gegevens te normaliseren, moeten we eerst de afzonderlijke entiteiten en attributen identificeren. Het lijkt erop dat de gegevens betrekking hebben op een skirace en de deelnemers en hun prestaties. Hieronder staan de afzonderlijke entiteiten en hun bijbehorende attributen:
+
+Entiteit 1: Skirace
+
+Skirace ID
+Skirace locatie
+Skirace datum
+Skirace tijd
+Skirace software
+Entiteit 2: Deelnemer
+
+Deelnemer ID
+Deelnemer naam
+Deelnemer geboortedatum
+Deelnemer club code
+Deelnemer club naam
+Entiteit 3: Prestatie
+
+Prestatie ID
+Prestatie tijd
+Prestatie verschil
+Skirace ID
+Deelnemer ID
+1e normaalvorm:
+
+We moeten ervoor zorgen dat alle attributen atomair zijn, dus niet meervoudig. In de gegeven tabel zijn de kolommen al redelijk atomair, maar we kunnen de gegevens nog verder scheiden:
+
+Skirace:
+
+Skirace ID
+Locatie
+Datum
+Tijd
+Software
+Deelnemer:
+
+Deelnemer ID
+Naam
+Geboortedatum
+Club:
+
+Club code
+Club naam
+Prestatie:
+
+Prestatie ID
+Tijd
+Verschil
+Skirace ID
+Deelnemer ID
+2e normaalvorm:
+
+We moeten ervoor zorgen dat alle niet-sleutelattributen afhankelijk zijn van de volledige sleutel. In de huidige structuur is dat nog niet het geval omdat de clubgegevens deels afhankelijk zijn van de deelnemer en deels afhankelijk van de race. We moeten deze gegevens scheiden:
+
+Skirace:
+
+Skirace ID
+Locatie
+Datum
+Tijd
+Software
+Deelnemer:
+
+Deelnemer ID
+Naam
+Geboortedatum
+Club code
+Club:
+
+Club code
+Club naam
+Prestatie:
+
+Prestatie ID
+Tijd
+Verschil
+Skirace ID
+Deelnemer ID
+3e normaalvorm:
+
+We moeten ervoor zorgen dat er geen transitieve afhankelijkheden zijn tussen de attributen. In de huidige structuur zijn de clubnaam en locatie afhankelijk van de club- en racecode. We moeten deze gegevens scheiden:
+
+Skirace:
+
+Skirace ID
+Locatie ID
+Datum
+Tijd
+Software
+Locatie:
+
+Locatie ID
+Locatie naam
+Deelnemer:
+
+Deelnemer ID
+Naam
+Geboortedatum
+Club code
+Club:
+
+Club code
+Club naam
+Prestatie:
+
+Prestatie ID
+Tijd
+Verschil
+Skirace ID
+Deelnemer ID
+Hierboven staan de gegevens in de 1e, 2e en 3e normaalvorm.

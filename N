@@ -1,0 +1,28 @@
+1NF ERD:
+
+Tabel: wedstrijdresultaten
+Kolommen: rank, rugnummer, naam, jaar, clubcode, aangepaste tijd, verschil
+Primaire sleutel: (rank, rugnummer)
+
+2NF ERD:
+
+Tabel: deelnemers
+Kolommen: rugnummer, naam, jaar, clubcode
+Primaire sleutel: rugnummer
+Tabel: resultaten
+Kolommen: rank, rugnummer, aangepaste tijd, verschil
+Primaire sleutel: (rank, rugnummer)
+Vreemde sleutel: rugnummer (verwijst naar deelnemers.rugnummer)
+
+3NF ERD:
+
+Tabel: deelnemers
+Kolommen: rugnummer, naam, jaar, clubcode
+Primaire sleutel: rugnummer
+Tabel: clubs
+Kolommen: clubcode, clubnaam
+Primaire sleutel: clubcode
+Tabel: resultaten
+Kolommen: rank, rugnummer, aangepaste tijd, verschil
+Primaire sleutel: (rank, rugnummer)
+Vreemde sleutels: rugnummer (verwijst naar deelnemers.rugnummer), clubcode (verwijst naar clubs.clubcode)

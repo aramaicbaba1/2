@@ -1,0 +1,23 @@
+              +----------------+              +----------------+
+              |     Race       |              |      Skier     |
+              +----------------+              +----------------+
+              | race_id        |              | skier_id       |
+              | race_name      |              | skier_name    |
+              | race_date      |              | skier_year    |
+              | race_location  |              | club_name     |
+              +----------------+              | club_code     |
+                                               +----------------+
+                                                        |
+                                                        |
+                                                        |
+                                                        |
+                                      +-----------------+---------------+
+                                      |              Performance          |
+                                      +----------------------------------+
+                                      | performance_id                   |
+                                      | race_id (fk)                      |
+                                      | skier_id (fk)                     |
+                                      | time                             |
+                                      | adjusted_time                    |
+                                      | rank                             |
+                                      +----------------------------------+
