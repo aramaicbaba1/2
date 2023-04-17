@@ -1,0 +1,146 @@
+0NV:
+
+Rijschoolhouder (Rijschoolhouder_ID [PK], Naam, Adres, Huisnummer, Woonplaats, Geboortedatum)
+Instructeur (Instructeur_ID [PK], Naam, Adres, Huisnummer, Woonplaats, Geboortedatum, Rijschoolhouder_ID [FK])
+Medewerker (Medewerker_ID [PK], Naam, Adres, Huisnummer, Woonplaats, Geboortedatum, Rijschoolhouder_ID [FK])
+Klant (Klant_ID [PK], Voornaam, Achternaam, Adres, Huisnummer, Woonplaats, Geboortedatum, Email, Telefoon)
+Auto (Auto_ID [PK], Kenteken [UNIQUE], Merk, Type, Beschrijving, Jaar, Kleur, Brandstof)
+Reservering (Reservering_ID [PK], Klant_ID [FK], Auto_ID [FK], Datum, Tijd, Aantal, Prijs, Omschrijving, Artikelnummer)
+BTWPercentage (BTW_ID [PK], Percentage)
+
+1NV:
+
+Rijschoolhouder (Rijschoolhouder_ID [PK], Naam, Adres, Huisnummer, Woonplaats, Geboortedatum)
+Instructeur (Instructeur_ID [PK], Naam, Adres, Huisnummer, Woonplaats, Geboortedatum, Rijschoolhouder_ID [FK])
+Medewerker (Medewerker_ID [PK], Naam, Adres, Huisnummer, Woonplaats, Geboortedatum, Rijschoolhouder_ID [FK])
+Klant (Klant_ID [PK], Voornaam, Achternaam, Adres, Huisnummer, Woonplaats, Geboortedatum)
+Auto (Auto_ID [PK], Kenteken [UNIQUE], Merk, Type)
+Reservering (Reservering_ID [PK], Klant_ID [FK], Auto_ID [FK], Aantal, Prijs, Omschrijving, Artikelnummer)
+BTWPercentage (BTW_ID [PK], Percentage)
+
+2NV:
+
+Rijschoolhouder (Rijschoolhouder_ID [PK], Naam, Adres, Huisnummer, Woonplaats, Geboortedatum)
+Instructeur (Instructeur_ID [PK], Naam, Adres, Huisnummer, Woonplaats, Geboortedatum, Rijschoolhouder_ID [FK])
+Medewerker (Medewerker_ID [PK], Naam, Adres, Huisnummer, Woonplaats, Geboortedatum, Rijschoolhouder_ID [FK])
+Klant (Klant_ID [PK], Voornaam, Achternaam, Adres, Huisnummer, Woonplaats, Geboortedatum)
+Auto (Auto_ID [PK], Kenteken [UNIQUE], Merk, Type)
+Reservering (Reservering_ID [PK], Klant_ID [FK], Auto_ID [FK], Aantal, Prijs, Omschrijving, Artikelnummer, BTW_ID [FK], Instructeur_ID [FK], Medewerker_ID [FK])
+BTWPercentage (BTW_ID [PK], Percentage)
+
+3NV 
+
+Rijschoolhouder (Rijschoolhouder_ID [PK], Naam, Adres, Huisnummer, Woonplaats, Geboortedatum)
+Instructeur (Instructeur_ID [PK], Naam, Adres, Huisnummer, Woonplaats, Geboortedatum, Rijschoolhouder_ID [FK])
+Medewerker (Medewerker_ID [PK], Naam, Adres, Huisnummer, Woonplaats, Geboortedatum, Rijschoolhouder_ID [FK])
+Klant (Klant_ID [PK], Voornaam, Achternaam, Adres, Huisnummer, Woonplaats, Geboortedatum)
+Auto (Auto_ID [PK], Kenteken [UNIQUE], Merk, Type)
+BTWPercentage (BTW_ID [PK], Percentage)
+Reservering (Reservering_ID [PK], Klant_ID [FK], Auto_ID [FK], Aantal, Prijs, Omschrijving, Artikelnummer, BTW_ID [FK])
+Reservering_Instructeur (Reservering_ID [PK, FK], Instructeur_ID [PK, FK])
+Reservering_Medewerker (Reservering_ID [PK, FK], Medewerker_ID [PK, FK])
+
+
+
+
+
+
+ERD:
+
+
+        +----------------+          +----------------+
+        |   Rijschoolhouder  |          |   BTWPercentage  |
+        +----------------+          +----------------+
+        | Rijschoolhouder_ID |          |     BTW_ID [PK]   |
+        |     Naam         |          |    Percentage     |
+        |    Adres         |           +-----------------+
+        |   Huisnummer     |
+        |  Woonplaats      |
+        | Geboortedatum    |
+        +-----------------+
+
+                |
+                |
+                |
+                |
+                |
+        +---------------+
+        |  Instructeur  |
+        +---------------+
+        | Instructeur_ID|
+        |    Naam       |
+        |    Adres      |
+        |   Huisnummer  |
+        |  Woonplaats   |
+        |Geboortedatum  |
+        |Rijschoolhouder_ID [FK]|
+        +---------------+
+
+                |
+                |
+                |
+                |
+                |
+        +---------------+
+        |   Medewerker  |
+        +---------------+
+        | Medewerker_ID |
+        |    Naam       |
+        |    Adres      |
+        |   Huisnummer  |
+        |  Woonplaats   |
+        |Geboortedatum  |
+        |Rijschoolhouder_ID [FK]|
+        +---------------+
+
+                |
+                |
+                |
+                |
+                |
+        +---------------+
+        |     Klant     |
+        +---------------+
+        |     Klant_ID  |
+        |    Voornaam   |
+        |    Achternaam |
+        |     Adres     |
+        |   Huisnummer  |
+        |  Woonplaats   |
+        |Geboortedatum  |
+        +---------------+
+
+                |
+                |
+                |
+                |
+                |
+        +---------------+
+        |      Auto     |
+        +---------------+
+        |    Auto_ID    |
+        |    Kenteken   |
+        |      Merk     |
+        |      Type     |
+        +---------------+
+
+                |
+                |
+                |
+                |
+                |
+        +----------------+
+        |   Reservering   |
+        +----------------+
+        | Reservering_ID  |
+        |     Aantal      |
+        |      Prijs      |
+        |  Omschrijving   |
+        |  Artikelnummer  |
+        |Klant_ID [FK]    |
+        |Auto_ID [FK]     |
+        |BTW_ID [FK]      |
+        |Instructeur_ID [FK]|
+        |Medewerker_ID [FK] |
+        +-----------------+
+
