@@ -1,0 +1,79 @@
+-- Rijschool database
+
+-- Tabel Rijschoolhouder
+CREATE TABLE Rijschoolhouder (
+  Rijschoolhouder_ID INT PRIMARY KEY,
+  Naam VARCHAR(50),
+  Adres VARCHAR(50),
+  Huisnummer VARCHAR(10),
+  Woonplaats VARCHAR(50),
+  Geboortedatum DATE
+);
+
+-- Tabel Instructeur
+CREATE TABLE Instructeur (
+  Instructeur_ID INT PRIMARY KEY,
+  Naam VARCHAR(50),
+  Adres VARCHAR(50),
+  Huisnummer VARCHAR(10),
+  Woonplaats VARCHAR(50),
+  Geboortedatum DATE,
+  Rijschoolhouder_ID INT,
+  FOREIGN KEY (Rijschoolhouder_ID) REFERENCES Rijschoolhouder(Rijschoolhouder_ID)
+);
+
+-- Tabel Medewerker
+CREATE TABLE Medewerker (
+  Medewerker_ID INT PRIMARY KEY,
+  Naam VARCHAR(50),
+  Adres VARCHAR(50),
+  Huisnummer VARCHAR(10),
+  Woonplaats VARCHAR(50),
+  Geboortedatum DATE,
+  Rijschoolhouder_ID INT,
+  FOREIGN KEY (Rijschoolhouder_ID) REFERENCES Rijschoolhouder(Rijschoolhouder_ID)
+);
+
+-- Tabel Klant
+CREATE TABLE Klant (
+  Klant_ID INT PRIMARY KEY,
+  Voornaam VARCHAR(50),
+  Achternaam VARCHAR(50),
+  Adres VARCHAR(50),
+  Huisnummer VARCHAR(10),
+  Woonplaats VARCHAR(50),
+  Geboortedatum DATE
+);
+
+-- Tabel Auto
+CREATE TABLE Auto (
+  Auto_ID INT PRIMARY KEY,
+  Kenteken VARCHAR(10) UNIQUE,
+  Merk VARCHAR(50),
+  Type VARCHAR(50)
+);
+
+-- Tabel Reservering
+CREATE TABLE Reservering (
+  Reservering_ID INT PRIMARY KEY,
+  Klant_ID INT,
+  Auto_ID INT,
+  Aantal INT,
+  Prijs DECIMAL(10,2),
+  Omschrijving VARCHAR(255),
+  Artikelnummer INT,
+  BTW_ID INT,
+  Instructeur_ID INT,
+  Medewerker_ID INT,
+  FOREIGN KEY (Klant_ID) REFERENCES Klant(Klant_ID),
+  FOREIGN KEY (Auto_ID) REFERENCES Auto(Auto_ID),
+  FOREIGN KEY (BTW_ID) REFERENCES BTWPercentage(BTW_ID),
+  FOREIGN KEY (Instructeur_ID) REFERENCES Instructeur(Instructeur_ID),
+  FOREIGN KEY (Medewerker_ID) REFERENCES Medewerker(Medewerker_ID)
+);
+
+-- Tabel BTWPercentage
+CREATE TABLE BTWPercentage (
+  BTW_ID INT PRIMARY KEY,
+  Percentage DECIMAL(5,2)
+);
